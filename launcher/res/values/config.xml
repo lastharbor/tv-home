@@ -29,6 +29,9 @@
     <!-- The manufacturer's own source picker, used if switching to an input directly fails. -->
     <string name="input_picker_package" translatable="false">com.tcl.suspension</string>
 
+    <!-- Idle minutes on the home screen before the clock/weather ambient view; 0 = never. -->
+    <integer name="ambient_minutes">5</integer>
+
     <!-- Tiles per row in the grid. -->
     <integer name="columns">5</integer>
 </resources>

@@ -22,4 +22,39 @@
     <integer name="afternoon_starts">12</integer>
     <integer name="evening_starts">17</integer>
     <integer name="night_starts">24</integer>
+
+    <!-- Weather (WMO codes from Open-Meteo) -->
+    <string name="wx_clear">Clear</string>
+    <string name="wx_mainly_clear">Mostly clear</string>
+    <string name="wx_partly_cloudy">Partly cloudy</string>
+    <string name="wx_overcast">Overcast</string>
+    <string name="wx_fog">Fog</string>
+    <string name="wx_drizzle">Drizzle</string>
+    <string name="wx_freezing_rain">Freezing rain</string>
+    <string name="wx_rain">Rain</string>
+    <string name="wx_snow">Snow</string>
+    <string name="wx_showers">Showers</string>
+    <string name="wx_snow_showers">Snow showers</string>
+    <string name="wx_thunder">Thunderstorm</string>
+    <string name="wx_thunder_hail">Thunderstorm with hail</string>
+
+    <!-- Sun arc -->
+    <string name="sun_rise">Sunrise</string>
+    <string name="sun_set">Sunset</string>
+    <string name="sun_in">in %1$s</string>
+    <string name="sun_daylight">Daylight %1$s</string>
+    <string name="sun_span_hm">%1$d h %2$02d min</string>
+    <string name="sun_span_m">%1$d min</string>
+    <string name="sun_polar_day">Polar day</string>
+    <string name="sun_polar_night">Polar night</string>
+
+    <!-- App menu, continue watching -->
+    <string name="continue_watching">Continue watching</string>
+    <string name="menu_move">Move</string>
+    <string name="menu_app_info">App settings</string>
+    <string name="menu_uninstall">Uninstall</string>
+    <string name="move_hint">◀ ▶ ▲ ▼ move   ·   OK done</string>
+    <string name="episode_sn">S%1$d E%2$d</string>
+    <string name="episode_n">Episode %1$d</string>
+    <string name="time_left">%1$s left</string>
 </resources>

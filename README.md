@@ -1,7 +1,7 @@
 # tv-home
 
 **Make a slow, ad-filled Android TV fast and clean again.** Debloat it over Wi-Fi and give it a
-tiny Apple TV-style home screen with rotating nature wallpapers. You can hand the whole thing to
+tiny Apple TV-style home screen with rotating wallpapers. You can hand the whole thing to
 Claude Code with one prompt, or do it by hand with the scripts here.
 
 ![Before: Google TV home with a sponsored hero. After: clean dock over a Lake Louise wallpaper](before-after.png)
@@ -49,8 +49,8 @@ Undo everything with `tools/restore.sh <the same list>`.
 | Path | What it is |
 |---|---|
 | [PROMPT.md](PROMPT.md) | The prompt for Claude Code / any coding agent |
-| [launcher/](launcher/) | The home screen. 4.7 MB including the wallpapers; plain Android, no network, no background services |
-| [launcher/res/values/config.xml](launcher/res/values/config.xml) | Dock apps, hidden apps, Live TV app, grid columns |
+| [launcher/](launcher/) | The home screen. 14 MB including the wallpapers; plain Android, no background services. Network only for weather and posters |
+| [launcher/res/values/config.xml](launcher/res/values/config.xml) | Dock apps, hidden apps, Live TV app, grid columns, idle minutes before the ambient view |
 | [launcher/res/values/strings.xml](launcher/res/values/strings.xml) | UI text and where each part of the day starts; translations in `res/values-<lang>/` |
 | [tools/tv.py](tools/tv.py) | Pure-Python ADB client: shell, batch, screenshots, chunked APK push |
 | [tools/find-tv.sh](tools/find-tv.sh) | Finds Android TVs on your Wi-Fi |
@@ -60,12 +60,31 @@ Undo everything with `tools/restore.sh <the same list>`.
 
 ## The launcher
 
-- Clock, greeting and date top-left. Frosted pills top-right for **Inputs** (HDMI/AV/Live TV
-  dropdown; the remote's Menu key opens it too), **Wi-Fi** (shows the network name) and **Settings**.
+- Clock, greeting and date top-left, current weather under them. The city comes from the public IP
+  (ipwho.is, geojs.io as fallback) and the weather from Open-Meteo; no API keys, cached for a day and
+  30 minutes.
+- A sun tile next to the clock: the next sunrise or sunset, a countdown, day length, and the sun on
+  an arc drawn from its real elevation today (NOAA formulas, computed on the TV). At night a moon
+  travels the arc instead.
+- Frosted pills top-right for **Inputs** (HDMI/AV/Live TV dropdown, shown only if the TV has any),
+  **Wi-Fi** (shows the network name) and **Settings**.
 - A dock of your favourite apps. The focused app's name appears above it over a glow coloured from
-  its banner. Press Down for every other app in a grid.
-- 12 nature photos crossfade every 10 minutes, with a scrim so text stays readable. Swap them in
-  `launcher/assets/wallpapers/` (1920×1080 JPEGs, credits in `launcher/WALLPAPER-CREDITS.md`).
+  its banner; the lifted tile's shadow takes the same colour.
+- **Continue watching**: the Watch Next list video apps publish to the system (the same row the stock
+  Android TV home shows): poster, episode, time left, progress. Needs `READ_TV_LISTINGS`, which is
+  granted at install.
+- Press Down for every other app in a grid.
+- Long press OK (or Menu) on any app: **Move** it with the arrows (in the dock, into the grid and
+  back, up to 6 dock apps; OK when done), open its **App settings**, or **Uninstall** it. The order
+  is saved on the TV.
+- 34 photos crossfade every 10 minutes, picked by time of day: nature while the sun is up, city
+  skylines from dusk, space from 23:00 to 05:00. The file prefix sets the theme (`n`, `c`, `s`).
+  Swap them in `launcher/assets/wallpapers/` (1920×1080 JPEGs, credits in
+  `launcher/WALLPAPER-CREDITS.md`).
+- After 5 idle minutes the home screen turns into an ambient view: a large clock, weather and the
+  sun tile over the photo, nudged every minute against burn-in. The first key press only wakes it.
+- Small animations: a light sweep across the focused tile, the app name slides in from the side you
+  moved, the clock digits roll over, the dock rises when you come back home.
 - Deterministic D-pad focus, remembers the last tile, picks up newly installed apps on return.
 
 Change the dock: edit `config.xml`, then run `launcher/build-and-install.sh`.

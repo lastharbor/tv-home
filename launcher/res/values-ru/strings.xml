@@ -19,4 +19,39 @@
     <integer name="afternoon_starts">12</integer>
     <integer name="evening_starts">18</integer>
     <integer name="night_starts">23</integer>
+
+    <!-- Weather (WMO codes from Open-Meteo) -->
+    <string name="wx_clear">Ясно</string>
+    <string name="wx_mainly_clear">Малооблачно</string>
+    <string name="wx_partly_cloudy">Переменная облачность</string>
+    <string name="wx_overcast">Пасмурно</string>
+    <string name="wx_fog">Туман</string>
+    <string name="wx_drizzle">Морось</string>
+    <string name="wx_freezing_rain">Ледяной дождь</string>
+    <string name="wx_rain">Дождь</string>
+    <string name="wx_snow">Снег</string>
+    <string name="wx_showers">Ливень</string>
+    <string name="wx_snow_showers">Снегопад</string>
+    <string name="wx_thunder">Гроза</string>
+    <string name="wx_thunder_hail">Гроза с градом</string>
+
+    <!-- Sun arc -->
+    <string name="sun_rise">Восход</string>
+    <string name="sun_set">Закат</string>
+    <string name="sun_in">через %1$s</string>
+    <string name="sun_daylight">Световой день %1$s</string>
+    <string name="sun_span_hm">%1$d ч %2$02d мин</string>
+    <string name="sun_span_m">%1$d мин</string>
+    <string name="sun_polar_day">Полярный день</string>
+    <string name="sun_polar_night">Полярная ночь</string>
+
+    <!-- App menu, continue watching -->
+    <string name="continue_watching">Продолжить просмотр</string>
+    <string name="menu_move">Переместить</string>
+    <string name="menu_app_info">Настройки приложения</string>
+    <string name="menu_uninstall">Удалить</string>
+    <string name="move_hint">◀ ▶ ▲ ▼ переместить   ·   ОК готово</string>
+    <string name="episode_sn">%1$d сезон, %2$d серия</string>
+    <string name="episode_n">%1$d серия</string>
+    <string name="time_left">осталось %1$s</string>
 </resources>
